@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+
+import Home from './components/Home'
+import Dashboard from './components/Dashboard'
+import Help from './components/Help'
+
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Tabs defaultActiveKey="home" id="ticket-tabs" className="mb-3 tabs">
+        <Tab eventKey="home" title="Home">
+          <Home></Home>
+        </Tab>
+        <Tab eventKey="dashboard" title="Dashboard">
+          <Dashboard></Dashboard>
+        </Tab>
+        <Tab eventKey="help" title="Help">
+          <Help></Help>  
+        </Tab>
+      </Tabs>
     </div>
   );
 }
