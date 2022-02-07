@@ -1,0 +1,16 @@
+.home-wrapper {
+    background-color: black;
+    height: 100&;
+    width: 100&;
+}
+
+.btn-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .login-btn, .admin-btn {
+        padding: 2rem;
+        margin-left: 90%;
+        margin: 2rem;
+    }
+}

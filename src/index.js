@@ -7,9 +7,11 @@ import App from './App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { MyContext } from "./context";
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <MyContext>
+    <App></App>
+  </MyContext>,
   document.getElementById('root')
 );
