@@ -1,13 +1,17 @@
 import './home.scss';
 
-import React from 'react';
+import React, {useContext} from 'react';
+import { IsLoggedInContext } from '../../context/isLoggedInContext';
 
 import Button from 'react-bootstrap/Button';
 
 const Home = () => {
 
+    const [isLoggedIn, setIsLoggedIn] = useContext(IsLoggedInContext);
+
     const handleLogIn = () => {
-        console.log("Clicked")
+        setIsLoggedIn(!isLoggedIn)
+        console.log(isLoggedIn)
     }
 
     return (
