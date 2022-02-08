@@ -1,4 +1,4 @@
-// https://react-bootstrap.github.io/
+// https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -7,11 +7,11 @@ import App from './App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { MyContext } from "./context";
+import { IsLoggedInContextProvider } from './context/isLoggedInContext';
 
 ReactDOM.render(
-  <MyContext>
+  <IsLoggedInContextProvider>
     <App></App>
-  </MyContext>,
+  </IsLoggedInContextProvider>,
   document.getElementById('root')
 );

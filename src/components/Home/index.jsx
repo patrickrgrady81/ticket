@@ -7,11 +7,11 @@ import Button from 'react-bootstrap/Button';
 
 const Home = () => {
 
-    const [isLoggedIn, setIsLoggedIn] = useContext(IsLoggedInContext);
+    const [isLoggedIn, setLoggedIn] = useContext(IsLoggedInContext);
 
     const handleLogIn = () => {
-        setIsLoggedIn(!isLoggedIn)
-        console.log(isLoggedIn)
+        setLoggedIn(!isLoggedIn);
+        console.log(isLoggedIn);
     }
 
     return (
