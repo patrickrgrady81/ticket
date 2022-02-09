@@ -1,13 +1,22 @@
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
-import ITab from './components/ITab';
+import Home from './components/Home';
+import Dashboard from './components/Dashboard';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      {/* My Component to Wrap Bootstrap Tab Component */}
-      <ITab></ITab>  
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/dashboard' element={<Dashboard />}></Route>
+      </Routes>
+    </Router>
   );
 }
 

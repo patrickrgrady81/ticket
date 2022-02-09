@@ -3,6 +3,8 @@ import './home.scss';
 import React, {useContext} from 'react';
 import { IsLoggedInContext } from '../../context/isLoggedInContext';
 
+import { Navigate } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
 
 const Home = () => {
@@ -10,15 +12,14 @@ const Home = () => {
     const [isLoggedIn, setLoggedIn] = useContext(IsLoggedInContext);
 
     const handleLogIn = () => {
-        setLoggedIn(!isLoggedIn);
-        console.log(isLoggedIn);
+        setLoggedIn(true);
     }
 
     return (
         <div className="home-wrapper">
             <div className="btn-wrapper">
-            <Button className="login-btn" onClick={handleLogIn}>Login</Button>
-            <Button className="admin-btn">Admin</Button>
+            {isLoggedIn ? <Navigate to='/dashboard'></Navigate> : <Button className="login-btn" onClick={handleLogIn}>Login</Button>}
+            
             </div>
         </div>
     );

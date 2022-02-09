@@ -1,17 +1,23 @@
 import React, { useContext } from 'react';
 
-import Home from '../Home'
+import { Navigate } from 'react-router-dom';
+
+import Button from 'react-bootstrap/Button';
 
 import { IsLoggedInContext } from '../../context/isLoggedInContext';
 
 const Index = () => {
 
-       const [isLoggedIn] = useContext(IsLoggedInContext);
+       const [isLoggedIn, setLoggedIn] = useContext(IsLoggedInContext);
+
+       const handleClick = () => {
+           setLoggedIn(false);
+       }
 
     return (
         <div>
             {/* Dashboard */}
-            {isLoggedIn ? <p>Dashboard</p> : <Home></Home>}
+            {isLoggedIn ? <Button onClick={handleClick}>Logout</Button> : <Navigate to='/'></Navigate>}
         </div>
     );
 }
