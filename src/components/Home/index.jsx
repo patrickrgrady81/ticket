@@ -5,7 +5,7 @@ import { IsLoggedInContext } from '../../context/isLoggedInContext';
 
 import { Navigate } from 'react-router-dom';
 
-import Button from 'react-bootstrap/Button';
+import Button from '@mui/material/Button';
 
 const Home = () => {
 
@@ -18,7 +18,7 @@ const Home = () => {
     return (
         <div className="home-wrapper">
             <div className="btn-wrapper">
-            {isLoggedIn ? <Navigate to='/dashboard'></Navigate> : <Button className="login-btn" onClick={handleLogIn}>Login</Button>}
+            {isLoggedIn ? <Navigate to='/dashboard'></Navigate> : <Button variant="contained" className="login-btn" onClick={handleLogIn}>Login</Button>}
             
             </div>
         </div>

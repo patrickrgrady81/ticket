@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { Navigate } from 'react-router-dom';
 
-import Button from 'react-bootstrap/Button';
+import Button from '@mui/material/Button';
 
 import { IsLoggedInContext } from '../../context/isLoggedInContext';
 
@@ -17,7 +17,7 @@ const Index = () => {
     return (
         <div>
             {/* Dashboard */}
-            {isLoggedIn ? <Button onClick={handleClick}>Logout</Button> : <Navigate to='/'></Navigate>}
+            {isLoggedIn ? <Button variant="contained" onClick={handleClick}>Logout</Button> : <Navigate to='/'></Navigate>}
         </div>
     );
 }
