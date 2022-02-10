@@ -8,10 +8,13 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { IsLoggedInContextProvider } from './context/isLoggedInContext';
+import { IsModalOpenContextProvider } from './context/isModalOpenContext';
 
 ReactDOM.render(
-  <IsLoggedInContextProvider>
-    <App></App>
-  </IsLoggedInContextProvider>,
+  <IsModalOpenContextProvider>
+    <IsLoggedInContextProvider>
+      <App></App>
+    </IsLoggedInContextProvider>
+  </IsModalOpenContextProvider>,
   document.getElementById('root')
 );

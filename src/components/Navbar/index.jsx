@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -134,9 +134,9 @@ const Navbar = () => {
                 { page }
               </Button>
             ))} */}
-            <Button variant="contained" onclick={() => <Navigate to='/' />}>Home</Button>
-            <Button variant="contained" onclick={() => <Navigate to='/dashboard' />}>Dashboard</Button>
-            <Button variant="contained" onclick={<Navigate to='/help' />}>Help</Button>
+            <Button sx={{ my: 2, color: 'white', display: 'block' }} variant="contained" onClick={() => <Navigate to='/' />}>Home</Button>
+            <Button sx={{ my: 2, color: 'white', display: 'block' }} variant="contained" onClick={() => <Navigate to='/dashboard' />}>Dashboard</Button>
+            <Button sx={{ my: 2, color: 'white', display: 'block' }} variant="contained" onClick={() => <Navigate to='/help' />}>Help</Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
