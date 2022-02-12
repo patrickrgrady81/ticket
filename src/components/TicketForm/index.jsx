@@ -1,69 +1,70 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
-import CancelDialog from '../CancelDialog';
+// import CancelDialog from '../CancelDialog';
 
-import { useFormik, Form, Field, ErrorMessage } from 'formik';
 
-import { IsModalOpenContext } from '../../context/isModalOpenContext';
+import Button from '@mui/material/Button';
 
-function TicketForm() {
+import './TicketForm.css';
+
+import { Formik, Field, Form } from "formik";
+
+const TicketForm = () => {
     // Pass the useFormik() hook initial form values and a submit function that will
     // be called when the form is submitted
-    
-    const [,setModalOpen] = useContext(IsModalOpenContext);
 
+    const initialValues = {
+        name: '',
+        email: '',
+        info: '',
+    }
+
+    const onSubmit = (values) => {
+        console.log(JSON.stringify(values, null, 2));
+
+        // Send the info to the backend
+    }
+
+        
     const handleCancel = () => {
         // TODO: Show a dialog to see if user really wants to cancel
         console.log("Canceled");
 
         // if yes
-        setModalOpen(false);
     }
 
-    const formik = useFormik({
-    initialValues: {
-        name: '',
-        email: '',
-        info: '',
-    },
-    onSubmit: values => {
-        console.log(JSON.stringify(values, null, 2));
-        setModalOpen(false);
-    },
-    });
     return (
         <>
-            <form onSubmit={formik.handleSubmit}>
-                <label htmlFor="name">First Name</label>
-                <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.name}
-                />
+            <Formik {...{ initialValues, onSubmit }}>
+            {() => (
+                <Form noValidate className="new-ticket">
+                    <label htmlFor="name">Name</label>
+                    <Field
+                        type="name"
+                        id="name"
+                        className="name formField"
+                        name="name"
+                    /><br/>
+                    <label htmlFor="email">Email</label>
+                    <Field
+                        type="email"
+                        id="email"
+                        className="email formField"
+                        name="email"
+                    /><br/>
+                    <label htmlFor="info">Ticket Information</label>
+                    <Field
+                        type="info"
+                        id="info"
+                        className="info formField"
+                        name="info"
+                    /><br/>
+                    <Button type="submit">Submit</Button>
+                    <Button onClick={handleCancel}>Cancel</Button>
+                </Form>
+            )}
+            </Formik>
 
-                <label htmlFor="email">Email Address</label>
-                <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                /><br />
-
-                <label htmlFor="info">Enter Ticket information</label>
-                <textarea                   
-                    id="email"
-                    name="info"
-                    type="info"
-                    onChange={formik.handleChange}
-                    value={formik.values.info} 
-                    rows="4" /><br />
-
-                <button type="submit">Submit</button>
-            </form>
-            <button type="cancel" onClick={handleCancel}>Cancel</button>
         </>
     );
 }

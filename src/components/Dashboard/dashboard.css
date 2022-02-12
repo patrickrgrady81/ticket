@@ -1,0 +1,7 @@
+.modal-styles {
+    background-color: rgba(ff,00,00,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+}
