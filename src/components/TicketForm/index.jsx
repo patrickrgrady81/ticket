@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 
 import './TicketForm.css';
 
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, useField } from "formik";
 
 const TicketForm = () => {
     // Pass the useFormik() hook initial form values and a submit function that will
@@ -19,19 +19,21 @@ const TicketForm = () => {
         info: '',
     }
 
-    const onSubmit = (values) => {
+    const onSubmit = (values, {setSubmitting, resetForm}) => {
         console.log(JSON.stringify(values, null, 2));
 
         // Send the info to the backend
     }
 
         
-    const handleCancel = () => {
-        // TODO: Show a dialog to see if user really wants to cancel
-        console.log("Canceled");
+    const doReset = () => {
+        // TODO: Show a dialog to see if user really wants to reset
+        console.log("Resetting");
 
         // if yes
     }
+
+    // TODO: Validate form info
 
     return (
         <>
@@ -40,7 +42,7 @@ const TicketForm = () => {
                 <Form noValidate className="new-ticket">
                     <label htmlFor="name">Name</label>
                     <Field
-                        type="name"
+                        type="text"
                         id="name"
                         className="name formField"
                         name="name"
@@ -52,15 +54,15 @@ const TicketForm = () => {
                         className="email formField"
                         name="email"
                     /><br/>
-                    <label htmlFor="info">Ticket Information</label>
-                    <Field
-                        type="info"
-                        id="info"
-                        className="info formField"
+                    <TextArea
+                        label="Ticket Information"
                         name="info"
-                    /><br/>
+                        rows="6"
+                        placeholder="Enter Ticket Information here..."
+                        className="formField"
+                    />
                     <Button type="submit">Submit</Button>
-                    <Button onClick={handleCancel}>Cancel</Button>
+                    <Button type="reset">Reset</Button>
                 </Form>
             )}
             </Formik>
@@ -70,3 +72,19 @@ const TicketForm = () => {
 }
 
 export default TicketForm
+
+
+const TextArea = ({label, ...props}) => {
+    // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
+    // which we can spread on <input> and alse replace ErrorMessage entirely.
+    const [field, meta] = useField(props);
+    return (
+        <>
+            <label htmlFor={props.id || props.name}>{label}</label>
+            <textarea className="text-area" {...field} {...props} />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </>
+    );
+  };

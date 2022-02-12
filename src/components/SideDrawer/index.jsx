@@ -35,8 +35,7 @@ const SideDrawer = () => {
             case 0:
                 return <TicketForm/>
             case 3: 
-                setLoggedIn(false);
-                break;
+                return setLoggedIn(false);
             default:
                 console.log(index);
         }
