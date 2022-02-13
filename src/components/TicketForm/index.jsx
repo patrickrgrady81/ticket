@@ -1,8 +1,5 @@
 import React from 'react'
 
-// import CancelDialog from '../CancelDialog';
-
-
 import Button from '@mui/material/Button';
 
 import './TicketForm.css';
@@ -27,17 +24,15 @@ const TicketForm = () => {
 
         
     const doReset = () => {
-        // TODO: Show a dialog to see if user really wants to reset
-        console.log("Resetting");
-
-        // if yes
+        // TODO: Do this with mui
+        window.confirm('Reset?') // does nothing
     }
 
     // TODO: Validate form info
 
     return (
         <>
-            <Formik {...{ initialValues, onSubmit }}>
+            <Formik {...{ initialValues, onSubmit }} onReset={doReset}>
             {() => (
                 <Form noValidate className="new-ticket">
                     <label htmlFor="name">Name</label>

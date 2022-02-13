@@ -10,10 +10,14 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import CreateIcon from '@mui/icons-material/Create';
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import TicketForm from '../TicketForm';
+import MyTickets from '../MyTickets';
+import AllTickets from '../AllTickets';
 
 import { IsLoggedInContext } from '../../context/isLoggedInContext';
 
@@ -30,10 +34,24 @@ const SideDrawer = () => {
         setIndex(index);
     }
 
+    const getIcon = (index) => {
+      switch(index) {
+        case 0: return <CreateIcon/>
+        case 1: return <LocalActivityIcon/>
+        case 2: return <ConfirmationNumberIcon/>
+        case 3: return <LogoutIcon/>
+        default: console.log("No such icon");
+    }
+    }
+
     const getSidebarAction = () => {
         switch(index) {
             case 0:
                 return <TicketForm/>
+            case 1:
+                return <MyTickets/>
+            case 2:
+                return <AllTickets/>
             case 3: 
                 return setLoggedIn(false);
             default:
@@ -72,7 +90,7 @@ const SideDrawer = () => {
           {['Create Ticket', 'My Tickets', 'All Tickets', 'Logout'].map((text, index) => (
             <ListItem button key={text} onClick={() => handleSideClick(index)}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {getIcon(index)}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>

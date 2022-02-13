@@ -1,0 +1,19 @@
+.ticket-card {
+    display: flex;
+    min-width: 250px;
+    max-width: 550px;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    padding: 1rem;
+    padding-top: 0;
+
+}
+
+.ticket-box {
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 2rem;
+}
